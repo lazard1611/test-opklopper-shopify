@@ -33,7 +33,14 @@
 <script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'ScrollTrigger.min.js' | asset_url }}" defer="defer"></script>
 
-<script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
+{% comment %}<script src="{{ 'share.js' | asset_url }}" defer="defer"></script>{% endcomment %}
 <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
+
+<script>
+    window.accessibilityStrings = {
+        imageAvailable: `{{ 'products.product.media.image_available' | t: index: '[index]' }}`,
+        shareSuccess: `{{ 'general.share.success_message' | t }}`,
+    };
+</script>
 </body>
 </html>
