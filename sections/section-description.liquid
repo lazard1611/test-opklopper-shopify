@@ -1,0 +1,116 @@
+<style>
+  .description p {
+    font-weight: 400;
+    line-height: 1.42
+}
+
+.description p:not(:last-child) {
+    margin-bottom: 1rem
+}
+
+@media screen and (min-width: 768px) {
+    .description p {
+        font-size: 2rem
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .description p {
+        font-size: 1.8rem
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .description {
+        padding-top: 7.8rem;
+        padding-bottom: 4.2rem
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .description {
+        padding-top: 3.2rem
+    }
+}
+
+.description__btn_wrap {
+    padding-top: 1rem;
+    text-align: right
+}
+
+@media screen and (min-width: 768px) {
+    .description__btn_wrap {
+        display: none
+    }
+}
+
+.description__text {
+    overflow: hidden;
+    transition: all .25s ease-out;
+    will-change: height
+}
+
+.description__wrap {
+    max-width: 71rem
+}
+
+</style>
+<div class="description__container ">
+    <div class="description__wrap js-hidden-text-container">     
+      {%- for block in section.blocks -%}      
+        {%- if block.settings.title != blank -%}          
+          <h2 class="h2 js-fade-el">{{ block.settings.title }}</h2>
+        {%- endif -%}
+        {%- if block.settings.text != blank -%}          
+          <div data-max-text="110" data-media-point="768" class="description__text js-hidden-text js-fade-el">
+            <p>{{ block.settings.text | strip_html }}</p>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+      
+      <div class="description__btn_wrap">
+        <button type="button" class="show_btn js-hidden-text-btn">Show more</button>
+      </div>
+
+    </div>
+</div>
+
+<script>
+  // console.log('init theme');
+</script>
+
+{% schema %}
+{
+  "name": "Section description",
+  "class": "section description",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    {
+      "type": "text",     
+      "name": "Section description",
+      "settings": [       
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "default": "Title",
+          "label": "Head"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Even provide a review.</p>",
+          "label": "description"
+        }          
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Section description"
+    }
+  ]
+}
+{% endschema %}

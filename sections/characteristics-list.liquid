@@ -1,0 +1,160 @@
+{%- style -%}
+   @media screen and (max-width: 767px) {
+    .characteristics {
+        padding-top: 1rem
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .characteristics__head:not(:last-child) {
+        margin-bottom: 1.8rem
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .characteristics__list {
+        display: grid;
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        align-items: start;
+        grid-gap: 2rem;
+        gap: 2rem
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .characteristics__item {
+        display: flex;
+        align-items: flex-start
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .characteristics__item:not(:last-child) {
+        margin-bottom: 1.6rem
+    }
+}
+
+.characteristics__title {
+    font-weight: 600
+}
+
+@media screen and (min-width: 1200px) {
+    .characteristics__item:nth-child(even) .characteristics__title {
+        max-width: 24.2rem
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .characteristics__title {
+        max-width: 29rem;
+        width: 100%
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .characteristics__title {
+        padding-right: 2rem;
+        font-size: 2.1rem;
+        line-height: 1.42
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .characteristics__title {
+        display: inline-block;
+        font-size: 1.8rem;
+        line-height: 1
+    }
+}
+
+.characteristics__value {
+    font-weight: 400;
+    color: #8c8c8c
+}
+
+@media screen and (min-width: 1200px) {
+    .characteristics__item:nth-child(even) .characteristics__value {
+        max-width: 37rem
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .characteristics__item:nth-child(odd) .characteristics__value {
+        max-width: 36rem
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .characteristics__value {
+        font-size: 2rem;
+        line-height: 1.42
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .characteristics__value {
+        display: inline-block;
+        font-size: 1.8rem;
+        line-height: 1
+    }
+}
+{%- endstyle -%}
+
+<div class="characteristics__container">
+    <div class="characteristics__wrap">
+        <h2 class="h2 characteristics__head js-fade-el">{{ section.settings.title }}</h2>
+        <ul class="characteristics__list js-fade-el">
+          {% for block in section.blocks %}
+            <li class="characteristics__item">
+              <div class="characteristics__title">{{ block.settings.title }}:</div>
+              <div class="characteristics__value">{{ block.settings.value }}</div>
+            </li>
+          {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% schema %}
+ {
+  "name": "Section characteristics",
+  "tag": "section",
+  "class": "section characteristics",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Eigenschappen",
+      "label": "Section characteristics title"
+    }      
+  ],
+  "blocks": [
+    {
+      "type": "characteristic",
+      "name": "Characteristic",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Your title here"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "Your value here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Section characteristics",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
