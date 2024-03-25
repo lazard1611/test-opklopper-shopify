@@ -1,6 +1,10 @@
 {{ 'featured-product.css' | asset_url | stylesheet_tag }}
 {{ 'buttons.css' | asset_url | stylesheet_tag }}
 
+{%- liquid
+    assign product = section.settings.product
+-%}
+
 <div class="product__container">
     <div class="breadcrumbs js-anim-breadcrumbs">
         <ul class="breadcrumbs__list">
@@ -21,7 +25,7 @@
                 <div class="product_thumb">
                     <div class="swiper product_thumb__slider js-product-thumb">
                         <div class="swiper-wrapper">
-                            {% for image in section.settings.product.images %}
+                            {% for image in product.images %}
                                 <div class="swiper-slide product_thumb__item">
                                     <picture class="product_thumb__pic">
                                         <img class="product_thumb__img" src="{{ image.src | img_url: '800x' }}" alt="{{ image.alt | escape }}" loading="eager">
@@ -79,7 +83,7 @@
             </div>
         </div>
         <div class="product__col_content">
-            <h1 class="product__title js-fade-el">{{ section.settings.product.title | escape }}</h1>
+            <h1 class="product__title js-fade-el">{{ product.title | escape }}</h1>
             <div class="product__description js-fade-el js-hidden-text-container">
                 <div data-max-text="150" data-ellipse-disable="true" class="product__description_text js-hidden-text">
                     <p>Ontgrendel ergonomische uitmuntendheid en verhoog je efficiëntie met onze zit-sta bureau oplossing!</p>
@@ -358,6 +362,7 @@
     "blocks": [
         {
         "type": "title",
+        "id": "title_id",
         "limit": 1,
         "default": "Head title",
         },
@@ -369,7 +374,31 @@
     ],
     "presets": [
         {
-        "name": "Featured product custom"
+        "name": "Featured product custom",
+        "blocks": [
+            {
+            "type": "text",
+            "settings": {
+                "text": "{{ section.settings.product.vendor }}",
+                "text_style": "uppercase"
+                }
+            },
+            {
+            "type": "title"
+            },
+            {
+            "type": "price"
+            },
+            {
+            "type": "variant_picker"
+            },
+            {
+            "type": "quantity_selector"
+            },
+            {
+            "type": "buy_buttons"
+            },
+        ]
         }
     ]
 }
