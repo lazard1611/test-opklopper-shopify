@@ -21,7 +21,7 @@
                 <div class="product_thumb">
                     <div class="swiper product_thumb__slider js-product-thumb">
                         <div class="swiper-wrapper">
-                            {% for image in product.images %}
+                            {% for image in section.settings.product.images %}
                                 <div class="swiper-slide product_thumb__item">
                                     <picture class="product_thumb__pic">
                                         <img class="product_thumb__img" src="{{ image.src | img_url: '800x' }}" alt="{{ image.alt | escape }}" loading="eager">
@@ -79,7 +79,7 @@
             </div>
         </div>
         <div class="product__col_content">
-            <h1 class="product__title js-fade-el">{{ section.settings.title }}</h1>
+            <h1 class="product__title js-fade-el">{{ section.settings.product.title | escape }}</h1>
             <div class="product__description js-fade-el js-hidden-text-container">
                 <div data-max-text="150" data-ellipse-disable="true" class="product__description_text js-hidden-text">
                     <p>Ontgrendel ergonomische uitmuntendheid en verhoog je efficiëntie met onze zit-sta bureau oplossing!</p>
@@ -275,11 +275,9 @@
     </div>
 </div>
 
-{% javascript %}
-    console.log(product.featured_image);
-{% endjavascript %}
 
 <script>
+
     const slider = () => {
         const SELECTORS = {
             mainSlider: '.js-product-slider',
@@ -336,8 +334,11 @@
 
     document.addEventListener("DOMContentLoaded", () => {
         slider();
+        const productData = {{ section.settings.product | json | escape }};
+        console.log(productData);
     });
 </script>
+
 
 {% schema %}
 {
@@ -349,13 +350,23 @@
         },
     "settings": [
             {
-        "type": "inline_richtext",
-        "id": "title",
-        "default": "Product title",
-        "label": "Title"
+        "type": "product",
+        "id": "product",
+        "label": "t:sections.featured-product-custom.settings.product.label"
         }
     ],
-
+    "blocks": [
+        {
+        "type": "title",
+        "limit": 1,
+        "default": "Head title",
+        },
+        {
+        "type": "price",
+        "name": "t:sections.featured-product-custom.blocks.price.name",
+        "limit": 1
+        }
+    ],
     "presets": [
         {
         "name": "Featured product custom"
