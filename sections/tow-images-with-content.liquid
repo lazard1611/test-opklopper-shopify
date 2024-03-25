@@ -5,12 +5,22 @@
     <div class="presentation__wrap">
         <div class="presentation__col_pic js-fade-el">
             <div class="presentation__pic_wrap">
-                <picture class="presentation__pic presentation__pic--v1_mod">
-                    <img src="./img/chair-1.jpg" alt="office chair" class="presentation__img">
-                </picture>
-                <picture class="presentation__pic presentation__pic--v2_mod">
-                    <img src="./img/chair-2.jpg" alt="office chair" class="presentation__img">
-                </picture>
+                {%- if section.settings.image_1 != blank -%}
+                    <picture class="presentation__pic presentation__pic--v1_mod">
+                        <img src="{{ section.settings.image_1 | img_url: 'master' }}" alt="office chair" class="presentation__img">
+                    </picture>
+                {%- else -%}
+                    {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+
+                {%- if section.settings.image_2 != blank -%}
+                    <picture class="presentation__pic presentation__pic--v2_mod">
+                        <img src="{{ section.settings.image_2 | img_url: 'master' }}" alt="office chair" class="presentation__img">
+                    </picture>
+                {%- else -%}
+                    {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+
             </div>
         </div>
         <div class="presentation__col_content js-fade-el">
@@ -37,29 +47,28 @@
     "disabled_on": {
     "groups": ["header", "footer"]
     },
-    "blocks": [
-    {
-    "type": "text",
-    "name": "Section description",
     "settings": [
         {
-        "type": "inline_richtext",
-        "id": "title",
-        "default": "Voor een complete kantoorinrichting. Ontdek naast stoelen en bureaus ook kantoorkasten bij Office-Interior. Complete kantooroplossingen door ervaren projectmanagers.",
-        "label": "Title"
+            "type": "inline_richtext",
+            "id": "title",
+            "default": "Voor een complete kantoorinrichting. Ontdek naast stoelen en bureaus ook kantoorkasten bij Office-Interior. Complete kantooroplossingen door ervaren projectmanagers.",
+            "label": "Title"
         },
         {
-        "type": "richtext",
-        "id": "text",
-        "default": "<p>Even provide a review.</p>",
-        "label": "description"
+            "type": "image_picker",
+            "id": "image_1",
+            "label": "Image 1"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_2",
+            "label": "Image 2"
         }
-        ]
-        }
-        ],
+    ],
+
     "presets": [
         {
-        "name": "Tow images with content"
+            "name": "Tow images with content"
         }
     ]
 }
