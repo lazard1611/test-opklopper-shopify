@@ -1,9 +1,5 @@
 {{ 'featured-product.css' | asset_url | stylesheet_tag }}
-{{ 'fancybox.css' | asset_url | stylesheet_tag }}
-{{ 'swiper-bundle.css' | asset_url | stylesheet_tag }}
-{{ 'fancybox.js' | asset_url | script_tag }}
-{{ 'swiper.js' | asset_url | script_tag }}
-{{ 'featured-product-slider.js' | asset_url | script_tag }}
+{{ 'buttons.css' | asset_url | stylesheet_tag }}
 
 <div class="product__container">
     <div class="breadcrumbs js-anim-breadcrumbs">
@@ -305,6 +301,66 @@
         </div>
     </div>
 </div>
+
+<script>
+    const slider = () => {
+        const SELECTORS = {
+            mainSlider: '.js-product-slider',
+            nextBtn: '.js-product-btn-next',
+            prevBtn: '.js-product-btn-prev',
+            thumbSlider: '.js-product-thumb',
+            nextBtnThumb: '.js-thumb-btn-next',
+            prevBtnThumb: '.js-thumb-btn-prev',
+        }
+
+        const $mainSlider = document.querySelector(SELECTORS.mainSlider);
+        const $thumbSlider = document.querySelector(SELECTORS.thumbSlider);
+        if (!$mainSlider || !$thumbSlider) return;
+
+        Fancybox.bind('[data-fancybox="gallery"]', {
+            on: {
+                'Carousel.change': (fancybox, carousel, slide) => {
+                    swiperMain.slideTo(slide);
+                },
+            },
+        });
+
+        const swiperThumb = new Swiper($thumbSlider, {
+            loop: false,
+            spaceBetween: 8,
+            slideToClickedSlide: true,
+            freeMode: true,
+            direction: "vertical",
+            slidesPerView: 3,
+        });
+
+        const swiperMain = new Swiper($mainSlider, {
+            loop: false,
+            freeMode: true,
+            zoom: false,
+            thumbs: {
+                swiper: swiperThumb
+            },
+
+            navigation: {
+                nextEl: SELECTORS.nextBtn,
+                prevEl: SELECTORS.prevBtn,
+            },
+        });
+
+        const $nextBtnThumb = document.querySelector(SELECTORS.nextBtnThumb);
+        const $prevBtnThumb = document.querySelector(SELECTORS.prevBtnThumb);
+
+        if ($nextBtnThumb && $prevBtnThumb) {
+            $nextBtnThumb.addEventListener('click', () => swiperMain.slideNext());
+            $prevBtnThumb.addEventListener('click', () => swiperMain.slidePrev());
+        }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+        slider();
+    });
+</script>
 
 {% schema %}
 {

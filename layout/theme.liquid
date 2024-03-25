@@ -7,11 +7,15 @@
     <link rel="canonical" href="{{ canonical_url }}">
     {{ content_for_header }}
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'fancybox.css' | asset_url | stylesheet_tag }}
+    {{ 'swiper-bundle.css' | asset_url | stylesheet_tag }}
     <title>{{ page_title }}</title>
 </head>
 <body>
 
 <div class="preloader"></div>
+
+{% sections 'header-group' %}
 
 <div class="wrapper">
     <div class="base">
@@ -22,6 +26,13 @@
 
 <script src="{{ 'main.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'show-more-and-less.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'quantity.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'swiper.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'fancybox.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'drop-menu.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'ScrollTrigger.min.js' | asset_url }}" defer="defer"></script>
+
 <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
 </body>

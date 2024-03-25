@@ -1,0 +1,171 @@
+.drop {
+    cursor: pointer;
+    position: relative
+}
+
+.header__nav .drop {
+    padding-right: 1.8rem
+}
+
+@media screen and (max-width: 1199px) {
+    .header__lang--desktop_mod .drop {
+        display: none
+    }
+}
+
+.drop_menu {
+    position: absolute;
+    z-index: 20;
+    top: 100%;
+    left: .2rem;
+    height: auto;
+    min-width: 20rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s ease, transform .3s ease
+}
+
+.header__lang .drop_menu {
+    min-width: 5rem
+}
+
+.header_sidebar__bottom .drop_menu {
+    bottom: 100%;
+    top: auto
+}
+
+@media (any-hover: hover) {
+    .drop:hover .drop_menu {
+        opacity: 1;
+        visibility: visible
+    }
+}
+
+@media screen and (any-hover: hover)and (min-width: 1200px) {
+    .drop:hover .drop_menu {
+        transform: translateY(-0.3rem)
+    }
+}
+
+@media screen and (any-hover: hover)and (max-width: 1199px) {
+    .drop:hover .drop_menu {
+        transform: translateY(0.3rem)
+    }
+}
+
+.drop--active_state .drop_menu {
+    opacity: 1;
+    visibility: visible
+}
+
+@media screen and (min-width: 1200px) {
+    .drop_menu {
+        padding-top: 1.3rem
+    }
+
+    .drop--active_state .drop_menu {
+        transform: translateY(-0.3rem)
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .drop_menu {
+        padding-bottom: 1.4rem
+    }
+
+    .drop--active_state .drop_menu {
+        transform: translateY(1.4rem)
+    }
+}
+
+.drop__btn {
+    z-index: 2;
+    position: relative;
+    font-family: "Avenir", sans-serif;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer
+}
+
+.header__lang .drop__btn {
+    font-size: 1.4rem
+}
+
+.drop__btn_decor {
+    flex-shrink: 0;
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-right: .6rem
+}
+
+.drop__btn_text {
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+    color: #2c2929
+}
+
+.drop__btn_icon {
+    flex-shrink: 0;
+    margin-left: 1rem;
+    transition: transform .3s ease
+}
+
+.header__lang .drop__btn_icon {
+    margin-left: .4rem;
+    width: 2.2rem;
+    height: 2.2rem
+}
+
+@media (any-hover: hover) {
+    .drop:hover .drop__btn_icon {
+        transform: rotate(180deg)
+    }
+}
+
+.drop--active_state .drop__btn_icon {
+    transform: rotate(180deg)
+}
+
+.header__right_list_wrap:not(:last-child) {
+    margin-right: 2rem
+}
+
+.drop_menu__list {
+    background-color: #fff;
+    box-shadow: 0 .4rem 1.5rem rgba(0, 0, 0, .1);
+    border-radius: .8rem;
+    overflow: hidden
+}
+
+.drop_menu__link {
+    position: relative;
+    display: block;
+    width: 100%;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: .01em;
+    white-space: nowrap;
+    color: #434343;
+    transition: background-color .3s ease, color .3s ease
+}
+
+.drop_menu__link:not(.drop_menu__item:last-child .drop_menu__link) {
+    padding: 1.2rem 1.4rem .8rem
+}
+
+.drop_menu__item:last-child .drop_menu__link {
+    padding: 1.2rem 1.4rem 1.4rem
+}
+
+.drop_menu__link:focus, .drop_menu__link:hover {
+    background-color: #fff4a8;
+    color: #000
+}

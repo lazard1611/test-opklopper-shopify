@@ -1,354 +1,7 @@
-<style>
-    .header {
-        z-index: 100;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: #fff;
-        height: var(--height-header);
-        width: 100%;
-        transition: transform .3s ease;
-        will-change: transform
-    }
-
-    .header.header--scroll_state {
-        background-color: rgba(255, 255, 255, .6);
-        transform: translateY(-100%)
-    }
-
-    .header__in {
-        max-width: 144.2rem;
-        width: 100%;
-        margin: 0 auto
-    }
-
-    @media screen and (max-width: 1199px) {
-        .header__logo_wrap {
-            flex: auto
-        }
-    }
-
-    .header__logo {
-        display: block
-    }
-
-    @media screen and (min-width: 768px) {
-        .header__logo {
-            width: 18rem;
-            height: 2.2rem
-        }
-    }
-
-    @media screen and (max-width: 767px) {
-        .header__logo {
-            width: 11rem;
-            height: 1.3rem
-        }
-    }
-
-    .header__logo_img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        -o-object-fit: contain;
-        object-fit: contain
-    }
-
-    .header__info {
-        background-color: #2c2929
-    }
-
-    @media screen and (min-width: 768px) {
-        .header__info {
-            padding: 1.2rem 2rem;
-            padding: 1.2rem var(--gl-indent)
-        }
-    }
-
-    @media screen and (max-width: 767px) {
-        .header__info {
-            padding: 1rem 2rem;
-            padding: 1rem var(--gl-indent)
-        }
-    }
-
-    .header__info_row {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        align-content: center;
-        align-items: center
-    }
-
-    .header__info_rating {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        align-content: center;
-        align-items: center
-    }
-
-    @media screen and (min-width: 768px) {
-        .header__info_rating {
-            padding-right: .4rem
-        }
-    }
-
-    @media screen and (max-width: 767px) {
-        .header__info_rating {
-            justify-content: flex-end
-        }
-    }
-
-    @media screen and (min-width: 768px) {
-        .header__info_rating_icon {
-            width: 12.8rem;
-            height: 2.4rem
-        }
-    }
-
-    @media screen and (max-width: 767px) {
-        .header__info_rating_icon {
-            width: 8rem;
-            height: 1.6rem;
-            margin: .4rem 0
-        }
-    }
-
-    @media screen and (min-width: 768px) {
-        .header__info_rating_icon:not(:last-child) {
-            margin-right: .8rem
-        }
-    }
-
-    .header__info_rating_text {
-        color: #fff
-    }
-
-    @media screen and (min-width: 768px) {
-        .header__info_rating_text {
-            font-weight: 500;
-            font-size: 1.6rem;
-            line-height: 1
-        }
-    }
-
-    @media screen and (max-width: 767px) {
-        .header__info_rating_text {
-            font-weight: 400;
-            font-size: 1.5rem;
-            line-height: 1.33
-        }
-    }
-
-    .header__info_text {
-        color: #fff;
-        padding-right: .7rem
-    }
-
-    @media screen and (min-width: 768px) {
-        .header__info_text {
-            font-weight: 500;
-            font-size: 1.6rem;
-            line-height: 1
-        }
-    }
-
-    @media screen and (max-width: 767px) {
-        .header__info_text {
-            font-weight: 400;
-            font-size: 1.5rem;
-            line-height: 1.33
-        }
-    }
-
-    .header__nav {
-        padding: 0 2rem;
-        flex: auto
-    }
-
-    @media screen and (max-width: 1200px) {
-        .header__nav {
-            display: none
-        }
-    }
-
-    .header__row, .header__lang_list, .header__social_list {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        align-content: center;
-        align-items: center
-    }
-
-    .header__nav_list {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-content: center;
-        align-items: center
-    }
-
-    @media screen and (min-width: 768px) {
-        .header__main {
-            padding: 2rem 2rem;
-            padding: 2rem var(--gl-indent)
-        }
-    }
-
-    @media screen and (max-width: 767px) {
-        .header__main {
-            padding: 1.4rem 2rem;
-            padding: 1.4rem var(--gl-indent)
-        }
-    }
-
-    .header__nav_list_link {
-        display: block;
-        border-radius: .8rem;
-        padding: .6rem 1.6rem;
-        font-weight: 400;
-        font-size: 1.8rem;
-        line-height: 1;
-        color: #2c2929;
-        transition: color .3s ease, background-color .3s ease
-    }
-
-    .header__nav_list_link:focus, .header__nav_list_link:hover {
-        background-color: #2c2929;
-        color: #fff
-    }
-
-    .header__lang_list:not(:last-child) {
-        margin-right: 3rem
-    }
-
-    .header__lang_btn {
-        display: block;
-        padding: .4rem .5rem;
-        cursor: pointer
-    }
-
-    .header__lang_btn:not(.header__lang_btn--active_state) {
-        border: 2px solid rgba(229, 229, 229, .6);
-        background-color: #434343
-    }
-
-    .header__lang_btn.header__lang_btn--active_state {
-        border: 2px solid rgba(0, 0, 0, 0);
-        box-shadow: 0 .1rem .4rem rgba(0, 0, 0, .15)
-    }
-
-    .header__lang_item:first-child .header__lang_btn {
-        border-radius: .4rem 0 0 .4rem
-    }
-
-    .header__lang_item:last-child .header__lang_btn {
-        border-radius: 0 .4rem .4rem 0
-    }
-
-    .header__right {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        align-content: flex-start;
-        align-items: center
-    }
-
-    .header__right_list {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        align-content: flex-start;
-        align-items: center
-    }
-
-    @media screen and (min-width: 768px) {
-        .header__right_list {
-            margin: 0 -2rem -2rem 0
-        }
-    }
-
-    @media screen and (max-width: 767px) {
-        .header__right_list {
-            margin: 0 -1.6rem -1.6rem 0
-        }
-    }
-
-    @media screen and (min-width: 768px) {
-        .header__right_item {
-            padding: 0 2rem 2rem 0
-        }
-    }
-
-    @media screen and (max-width: 767px) {
-        .header__right_item {
-            padding: 0 1.6rem 1.6rem 0
-        }
-    }
-
-    .header__right_link {
-        display: block;
-        width: 2.4rem;
-        height: 2.4rem;
-        color: #2c2929
-    }
-
-    .header__menu_trigger {
-        position: relative;
-        z-index: 5;
-        width: 2rem;
-        height: 1.2rem;
-        cursor: pointer
-    }
-
-    .header__menu_trigger::before, .header__menu_trigger::after, .header__menu_trigger span {
-        position: absolute;
-        left: 0;
-        top: 50%;
-        width: 100%;
-        height: 2px;
-        border-radius: 1px;
-        transition: transform .3s ease;
-        will-change: transform;
-        background-color: #000
-    }
-
-    .header__menu_trigger::before {
-        content: "";
-        transform: translateY(calc(1.2rem / 2 * -1))
-    }
-
-    .header__menu_trigger::after {
-        content: "";
-        transform: translateY(calc(1.2rem / 2))
-    }
-
-    .body--open_menu_state .header__menu_trigger span {
-        transform: scale(0)
-    }
-
-    .body--open_menu_state .header__menu_trigger::before {
-        transform: rotate(-45deg)
-    }
-
-    .body--open_menu_state .header__menu_trigger::after {
-        transform: rotate(45deg)
-    }
-
-    @media screen and (min-width: 1200px) {
-        .header__menu_trigger {
-            display: none
-        }
-    }
-
-</style>
+{{ 'header.css' | asset_url | stylesheet_tag }}
+{{ 'dropmenu.css' | asset_url | stylesheet_tag }}
+{{ 'header-sidebar.css' | asset_url | stylesheet_tag }}
+{{ 'header-submenu.css' | asset_url | stylesheet_tag }}
 
 <header class="header">
     <div class="header__info">
@@ -548,3 +201,134 @@
         </div>
     </div>
 </header>
+
+<script>
+    const exist = (elementOrArray) => {
+        if (!elementOrArray && elementOrArray !== 0) return false;
+        if (elementOrArray.length === 0) {
+            return false;
+        }
+        return true;
+    };
+
+    function debounce(delay, fn) {
+        let timerId;
+        return (...args) => {
+            if (timerId) {
+                clearTimeout(timerId);
+            }
+            timerId = setTimeout(() => {
+                fn(...args);
+                timerId = null;
+            }, delay);
+        };
+    }
+
+    const onWindowScroll = (cb) => {
+        if (!cb && !isFunction(cb)) return;
+
+        const handleScroll = () => {
+            cb(window.pageYOffset);
+        };
+        window.addEventListener('scroll', debounce(15, handleScroll));
+        handleScroll();
+    };
+
+    const header = () => {
+        const SELECTORS = {
+            header: '.header',
+            headerNavLink: '.header__nav_list_link',
+            headerSidebar: '.js-header-sidebar',
+            headerSidebarLink: '.js-header-sidebar-link',
+            headerSidebarSubmenuClose: '.js-header-sidebar-submenu-close',
+            menuTrigger: '.js-header-trigger',
+        };
+
+        const CLASSNAMES = {
+            bodyOpenMenuState: 'body--open_menu_state',
+            bodyOpenSubmenuState: 'body--open_submenu_state',
+            headerScrollState: 'header--scroll_state',
+            submenuOpenState: 'submenu--open_state',
+        };
+
+        const $body = document.body;
+        const $header = document.querySelector(SELECTORS.header);
+        const $sidebar = document.querySelector(SELECTORS.headerSidebar);
+        const $menuTriggers = document.querySelectorAll(SELECTORS.menuTrigger);
+        if (!exist([$header, $sidebar])) return;
+        const $btnSubmenuClose = $sidebar.querySelector(SELECTORS.headerSidebarSubmenuClose);
+
+        let isMenuOpen = false;
+
+        const openSubMenu = (e) => {
+            const $submenu = e.target.nextElementSibling;
+            if ($submenu) {
+                e.preventDefault();
+                $body.classList.add(CLASSNAMES.bodyOpenSubmenuState);
+
+                if (e.target.closest(SELECTORS.headerSidebarLink)) {
+                    $submenu.classList.add(CLASSNAMES.submenuOpenState);
+                }
+            }
+        };
+
+        const closeSubMenu = (e) => {
+            if (!$btnSubmenuClose) return;
+            const $submenu = $btnSubmenuClose.closest('.submenu');
+            if (e.target.closest(SELECTORS.headerSidebarSubmenuClose)) {
+                $body.classList.remove(CLASSNAMES.bodyOpenSubmenuState);
+                $submenu.classList.remove(CLASSNAMES.submenuOpenState);
+            }
+        };
+
+        $sidebar.addEventListener('click', (e) => {
+            openSubMenu(e);
+            closeSubMenu(e);
+        });
+
+        const handleTriggerClick = () => {
+            if (!isMenuOpen) {
+                $body.classList.add(CLASSNAMES.bodyOpenMenuState);
+                isMenuOpen = true;
+            } else {
+                $body.classList.remove(CLASSNAMES.bodyOpenMenuState);
+                isMenuOpen = false;
+            }
+        };
+
+        let prevScrollPos = window.pageYOffset;
+
+        const headerScroll = () => {
+            const newScrollVal = window.pageYOffset;
+
+            if (
+                    prevScrollPos < newScrollVal &&
+                    newScrollVal > 100 &&
+                    !$header.classList.contains(CLASSNAMES.headerScrollState)
+            ) {
+                $header.classList.add(CLASSNAMES.headerScrollState);
+            } else if (
+                    $header.classList.contains(CLASSNAMES.headerScrollState) &&
+                    (newScrollVal < prevScrollPos || newScrollVal <= 100)
+            ) {
+                $header.classList.remove(CLASSNAMES.headerScrollState);
+            }
+
+            prevScrollPos = newScrollVal;
+        };
+
+        onWindowScroll(headerScroll);
+
+        if (!exist($menuTriggers)) return;
+
+        $menuTriggers.forEach(($trigger) => {
+            $trigger.addEventListener('click', () => {
+                handleTriggerClick();
+            });
+        });
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+        header();
+    });
+</script>

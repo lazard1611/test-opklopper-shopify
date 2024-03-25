@@ -694,3 +694,16 @@
     height: 2.4rem;
     color: #fff
 }
+
+.sales_points__item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: center
+}
+
+.sales_points__item:not(:last-child) {
+    margin-bottom: 1rem
+}

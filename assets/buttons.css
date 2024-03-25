@@ -1,0 +1,72 @@
+.btn_normal {
+    padding: 0 2rem;
+    min-height: 4.4rem;
+    line-height: 4.4rem;
+    font-size: 1.6rem;
+    border-radius: .8rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: #2c2929;
+    transition: background-color .3s ease;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;
+    font-family: "Avenir", sans-serif;
+    cursor: pointer
+}
+
+.btn_normal[type=submit] {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none
+}
+
+.btn_normal:hover, .btn_normal:focus {
+    -webkit-text-decoration: none;
+    text-decoration: none
+}
+
+.btn_normal:hover {
+    background-color: #121010
+}
+
+.btn_normal_transparent {
+    padding: 0 2rem;
+    min-height: 4.4rem;
+    line-height: 4.4rem;
+    font-size: 1.6rem;
+    border-radius: .8rem;
+    font-weight: 500;
+    color: #2c2929;
+    transition: background-color .3s ease;
+    border: 1px solid #2c2929;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;
+    font-family: "Avenir", sans-serif;
+    cursor: pointer
+}
+
+.btn_normal_transparent[type=submit] {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none
+}
+
+.btn_normal_transparent:hover, .btn_normal_transparent:focus {
+    -webkit-text-decoration: none;
+    text-decoration: none
+}
+
+.btn_normal_transparent:hover {
+    background-color: rgba(222, 222, 222, .6)
+}
+
+.show_btn {
+    font-weight: 600;
+    font-size: 1.6rem
+}

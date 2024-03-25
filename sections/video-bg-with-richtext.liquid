@@ -23,21 +23,21 @@
                     {%- endstyle -%}
 
                     {% if block.settings.text != blank %}
-                        <div class="introduction__pre_title" id="{{ block.id }}"
+                        <div class="introduction__pre_title js-fade-el" id="{{ block.id }}"
                              style="color: {{ block.settings.color_text }}">
                             {{ block.settings.text }}
                         </div>
                     {% endif %}
 
                     {% if block.settings.title != blank %}
-                        <h2 class="introduction__title" style="color: {{ block.settings.color_text }}">
+                        <h2 class="introduction__title js-fade-el" style="color: {{ block.settings.color_text }}">
                             {{ block.settings.title | escape }}
                         </h2>
                     {% endif %}
 
                     {% if block.settings.button_link != blank and block.settings.button_label != blank %}
 
-                        <a href="{{ block.settings.button_link }}" class="introduction__btn"
+                        <a href="{{ block.settings.button_link }}" class="introduction__btn js-fade-el"
                            style="color: {{ block.settings.color_btn_text }}; background: {{ block.settings.color_btn_bg }}">
 
                             {{ block.settings.button_label | escape }}
@@ -61,21 +61,21 @@
                     {%- endstyle -%}
 
                     {% if block.settings.text != blank %}
-                        <div class="introduction__pre_title" id="{{ block.id }}"
+                        <div class="introduction__pre_title js-fade-el" id="{{ block.id }}"
                              style="color: {{ block.settings.color_text }}">
                             {{ block.settings.text }}
                         </div>
                     {% endif %}
 
                     {% if block.settings.title != blank %}
-                        <h2 class="introduction__title" style="color: {{ block.settings.color_text }}">
+                        <h2 class="introduction__title js-fade-el" style="color: {{ block.settings.color_text }}">
                             {{ block.settings.title | escape }}
                         </h2>
                     {% endif %}
 
                     {% if block.settings.button_link != blank and block.settings.button_label != blank %}
 
-                        <a href="{{ block.settings.button_link }}" class="introduction__btn"
+                        <a href="{{ block.settings.button_link }}" class="introduction__btn js-fade-el"
                            style="color: {{ block.settings.color_btn_text }}; background: {{ block.settings.color_btn_bg }}">
 
                             {{ block.settings.button_label | escape }}
