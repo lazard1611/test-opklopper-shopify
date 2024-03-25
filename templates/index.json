@@ -153,11 +153,17 @@
       ],
       "settings": {
       }
+    },
+    "tow_images_with_content_NhhMTK": {
+      "type": "tow-images-with-content",
+      "settings": {
+      }
     }
   },
   "order": [
     "section_description_3cEt9U",
     "characteristics_list_aU4Dmx",
-    "video_bg_with_richtext_dt687F"
+    "video_bg_with_richtext_dt687F",
+    "tow_images_with_content_NhhMTK"
   ]
 }
