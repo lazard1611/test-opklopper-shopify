@@ -1,0 +1,66 @@
+{{ 'presentation.css' | asset_url | stylesheet_tag }}
+
+<div class="presentation__container">
+    <h2 class="presentation__title js-fade-el">{{ section.settings.title }}</h2>
+    <div class="presentation__wrap">
+        <div class="presentation__col_pic js-fade-el">
+            <div class="presentation__pic_wrap">
+                <picture class="presentation__pic presentation__pic--v1_mod">
+                    <img src="./img/chair-1.jpg" alt="office chair" class="presentation__img">
+                </picture>
+                <picture class="presentation__pic presentation__pic--v2_mod">
+                    <img src="./img/chair-2.jpg" alt="office chair" class="presentation__img">
+                </picture>
+            </div>
+        </div>
+        <div class="presentation__col_content js-fade-el">
+            <div class="presentation__content">
+                <div class="presentation__description">Hier vindt u alles voor uw kantoor</div>
+                <a href="#" class="presentation__link">
+                    Meer ontdekken
+                    <span class="presentation__link_icon">
+                        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 26L26 6M26 6H11M26 6V21" stroke="#2C2929" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Tow images with content",
+    "class": "section presentation",
+    "tag": "section",
+    "disabled_on": {
+    "groups": ["header", "footer"]
+    },
+    "blocks": [
+    {
+    "type": "text",
+    "name": "Section description",
+    "settings": [
+        {
+        "type": "inline_richtext",
+        "id": "title",
+        "default": "Voor een complete kantoorinrichting. Ontdek naast stoelen en bureaus ook kantoorkasten bij Office-Interior. Complete kantooroplossingen door ervaren projectmanagers.",
+        "label": "Title"
+        },
+        {
+        "type": "richtext",
+        "id": "text",
+        "default": "<p>Even provide a review.</p>",
+        "label": "description"
+        }
+        ]
+        }
+        ],
+    "presets": [
+        {
+        "name": "Tow images with content"
+        }
+    ]
+}
+{% endschema %}
