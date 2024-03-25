@@ -1,5 +1,11 @@
 {
   "sections": {
+    "featured_product_YTU8ck": {
+      "type": "featured-product",
+      "settings": {
+        "title": ""
+      }
+    },
     "section_description_3cEt9U": {
       "type": "section-description",
       "blocks": {
@@ -167,6 +173,7 @@
     }
   },
   "order": [
+    "featured_product_YTU8ck",
     "section_description_3cEt9U",
     "characteristics_list_aU4Dmx",
     "video_bg_with_richtext_dt687F",
