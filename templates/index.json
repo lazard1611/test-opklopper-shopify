@@ -159,7 +159,10 @@
       "settings": {
         "title": "Voor een complete kantoorinrichting. Ontdek naast stoelen en bureaus ook kantoorkasten bij Office-Interior. Complete kantooroplossingen door ervaren projectmanagers.",
         "image_1": "shopify:\/\/shop_images\/chair-1.jpg",
-        "image_2": "shopify:\/\/shop_images\/chair-2.jpg"
+        "image_2": "shopify:\/\/shop_images\/chair-2.jpg",
+        "text_description": "Hier vindt u alles voor uw kantoor",
+        "button_link": "shopify:\/\/pages\/contact",
+        "button_label": "Meer ontdekken"
       }
     }
   },
