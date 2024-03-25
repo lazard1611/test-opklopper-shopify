@@ -21,26 +21,13 @@
                 <div class="product_thumb">
                     <div class="swiper product_thumb__slider js-product-thumb">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide product_thumb__item">
-                                <picture class="product_thumb__pic">
-                                    <img class="product_thumb__img" src="./img/gallery/thumb-1.webp" alt="thumb 1" loading="eager">
-                                </picture>
-                            </div>
-                            <div class="swiper-slide product_thumb__item">
-                                <picture class="product_thumb__pic">
-                                    <img class="product_thumb__img" src="./img/gallery/thumb-2.webp" alt="thumb 2" loading="eager">
-                                </picture>
-                            </div>
-                            <div class="swiper-slide product_thumb__item">
-                                <picture class="product_thumb__pic">
-                                    <img class="product_thumb__img" src="./img/gallery/thumb-3.webp" alt="thumb 3" loading="eager">
-                                </picture>
-                            </div>
-                            <div class="swiper-slide product_thumb__item">
-                                <picture class="product_thumb__pic">
-                                    <img class="product_thumb__img" src="./img/gallery/thumb-4.webp" alt="thumb 4" loading="eager">
-                                </picture>
-                            </div>
+                            {% for image in product.images %}
+                                <div class="swiper-slide product_thumb__item">
+                                    <picture class="product_thumb__pic">
+                                        <img class="product_thumb__img" src="{{ image.src | img_url: '800x' }}" alt="{{ image.alt | escape }}" loading="eager">
+                                    </picture>
+                                </div>
+                            {% endfor %}
                         </div>
 
 
@@ -64,27 +51,13 @@
 
                 <div class="swiper product_slider js-product-slider">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide product_slider__item">
-                            <a data-fancybox="gallery" href="assets/slider-1.webp" class="product_slider__pic">
-                                <img class="product_slider__img" src="./img/gallery/slider-1.webp" alt="slide 1" loading="eager">
-                            </a>
-                        </div>
-                        <div class="swiper-slide product_slider__item">
-                            <a data-fancybox="gallery" href="assets/slider-2.webp" class="product_slider__pic">
-                                <img class="product_slider__img" src="./img/gallery/slider-2.webp" alt="slide 2" loading="eager">
-                            </a>
-                        </div>
-                        <div class="swiper-slide product_slider__item">
-                            <a data-fancybox="gallery" href="assets/slider-3.webp" class="product_slider__pic">
-                                <img class="product_slider__img" src="./img/gallery/slider-3.webp" alt="slide 3" loading="eager">
-                            </a>
-                        </div>
-                        <div class="swiper-slide product_slider__item">
-                            <a data-fancybox="gallery" href="assets/slider-2.webp" class="product_slider__pic">
-                                <img class="product_slider__img" src="./img/gallery/slider-2.webp" alt="slide 3" loading="eager">
-                            </a>
-                        </div>
-
+                        {% for image in product.images %}
+                            <div class="swiper-slide product_slider__item">
+                                <a data-fancybox="gallery" href="{{ image.src | img_url: 'master' }}" class="product_slider__pic">
+                                    <img class="product_slider__img" src="{{ image.src | img_url: '800x' }}" alt="{{ image.alt | escape }}" loading="eager">
+                                </a>
+                            </div>
+                        {% endfor %}
                     </div>
 
                     <div class="controls">
