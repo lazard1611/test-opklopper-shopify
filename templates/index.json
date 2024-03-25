@@ -156,19 +156,10 @@
     },
     "tow_images_with_content_NhhMTK": {
       "type": "tow-images-with-content",
-      "blocks": {
-        "text_h8iWpW": {
-          "type": "text",
-          "settings": {
-            "title": "Voor een complete kantoorinrichting. Ontdek naast stoelen en bureaus ook kantoorkasten bij Office-Interior. Complete kantooroplossingen door ervaren projectmanagers.",
-            "text": "<p>Even provide a review.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "text_h8iWpW"
-      ],
       "settings": {
+        "title": "Voor een complete kantoorinrichting. Ontdek naast stoelen en bureaus ook kantoorkasten bij Office-Interior. Complete kantooroplossingen door ervaren projectmanagers.",
+        "image_1": "shopify:\/\/shop_images\/chair-1.jpg",
+        "image_2": "shopify:\/\/shop_images\/chair-2.jpg"
       }
     }
   },
