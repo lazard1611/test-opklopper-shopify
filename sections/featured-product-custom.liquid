@@ -103,9 +103,10 @@
                             <p>{{- block.settings.text -}}</p>
                         </div>
 
-                        <button type="button" class="show_btn js-hidden-text-btn">Show more</button>
-                    </div>
-
+                        {% if block.settings.text != blank %}
+                            <button type="button" class="show_btn js-hidden-text-btn">Show more</button>
+                        {% endif %}
+                        </div>
                     {%- when 'price' -%}
                         <div class="no-js-hidden">
 
