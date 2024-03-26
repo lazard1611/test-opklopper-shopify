@@ -100,7 +100,7 @@
                         <div data-max-text="150" data-ellipse-disable="true" class="product__description_text js-hidden-text">
                             {{ product.description | escape}}
 
-                            <p>{{- block.settings.text -}}</p>
+                            <p>{{- block.settings.text | strip_html -}}</p>
                         </div>
 
                         {% if block.settings.text != blank %}
