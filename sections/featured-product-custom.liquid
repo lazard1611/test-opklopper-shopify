@@ -19,6 +19,7 @@
             </li>
         </ul>
     </div>
+
     <div class="product__wrap">
         <div class="product__col_gallery js-fade-el">
             <div class="product_gallery">
@@ -55,7 +56,7 @@
 
                 <div class="swiper product_slider js-product-slider">
                     <div class="swiper-wrapper">
-                        {% for image in product.featured_image %}
+                        {% for image in product.images %}
                             <div class="swiper-slide product_slider__item">
                                 <a data-fancybox="gallery" href="{{ image.src | img_url: 'master' }}" class="product_slider__pic">
                                     <img class="product_slider__img" src="{{ image.src | img_url: '800x' }}" alt="{{ image.alt | escape }}" loading="eager">
