@@ -83,7 +83,13 @@
             </div>
         </div>
         <div class="product__col_content">
-            <h1 class="product__title js-fade-el">{{ product.title | escape }}</h1>
+            <h1 class="product__title js-fade-el">
+                {%- if product.title != blank -%}
+                    {{ product.title | escape }}
+                {%- else -%}
+                    {{ 'onboarding.product_title' | t }}
+                {%- endif -%}
+            </h1>
             <div class="product__description js-fade-el js-hidden-text-container">
                 <div data-max-text="150" data-ellipse-disable="true" class="product__description_text js-hidden-text">
                     <p>Ontgrendel ergonomische uitmuntendheid en verhoog je efficiëntie met onze zit-sta bureau oplossing!</p>
@@ -338,11 +344,10 @@
 
     document.addEventListener("DOMContentLoaded", () => {
         slider();
-        const productData = {{ section.settings.product | json | escape }};
-        console.log(productData);
+        {% comment %}const productData = {{ section.settings.product | json | escape }};{% endcomment %}
+        {% comment %}console.log(productData);{% endcomment %}
     });
 </script>
-
 
 {% schema %}
 {
@@ -353,52 +358,22 @@
             "groups": ["header", "footer"]
         },
     "settings": [
-            {
-        "type": "product",
-        "id": "product",
-        "label": "t:sections.featured-product-custom.settings.product.label"
+        {
+            "type": "product",
+            "id": "product",
+            "label": "t:sections.featured-product-custom.settings.product.label"
         }
     ],
     "blocks": [
         {
-        "type": "title",
-        "id": "title_id",
-        "limit": 1,
-        "default": "Head title",
-        },
-        {
-        "type": "price",
-        "name": "t:sections.featured-product-custom.blocks.price.name",
-        "limit": 1
+        "type": "text",
+        "name": "t:sections.featured-product.blocks.text.name"
         }
     ],
     "presets": [
         {
-        "name": "Featured product custom",
-        "blocks": [
-            {
-            "type": "text",
-            "settings": {
-                "text": "{{ section.settings.product.vendor }}",
-                "text_style": "uppercase"
-                }
-            },
-            {
-            "type": "title"
-            },
-            {
-            "type": "price"
-            },
-            {
-            "type": "variant_picker"
-            },
-            {
-            "type": "quantity_selector"
-            },
-            {
-            "type": "buy_buttons"
-            },
-        ]
+        "name": "Featured product custom"
+
         }
     ]
 }
