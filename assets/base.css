@@ -70,13 +70,13 @@ input, select, textarea, button {
 
 @media screen and (min-width: 768px) {
     :root {
-        --height-header: 12rem
+        --height-header: 7rem
     }
 }
 
 @media screen and (max-width: 767px) {
     :root {
-        --height-header: 11.5rem
+        --height-header: 5.2rem
     }
 }
 
@@ -148,7 +148,7 @@ body.body--open_menu_state {
 .base {
     width: 100%;
     position: relative;
-    padding: var(--height-header) 0 0;
+    /*padding: var(--height-header) 0 0;*/
     background-color: #fff;
     flex: 1 0 auto
 }

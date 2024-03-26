@@ -29,7 +29,7 @@
                             {% for image in product.images %}
                                 <div class="swiper-slide product_thumb__item">
                                     <picture class="product_thumb__pic">
-                                        <img class="product_thumb__img" src="{{ image.src | img_url: '800x' }}" alt="{{ image.alt | escape }}" loading="eager">
+                                        <img class="product_thumb__img" src="{{ image.src | img_url }}" alt="{{ image.alt | escape }}" loading="eager">
                                     </picture>
                                 </div>
                             {% endfor %}

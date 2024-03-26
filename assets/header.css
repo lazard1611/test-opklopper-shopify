@@ -1,6 +1,6 @@
 .header {
     z-index: 100;
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     background-color: #fff;
@@ -12,7 +12,8 @@
 
 .header.header--scroll_state {
     background-color: rgba(255, 255, 255, .6);
-    transform: translateY(-100%)
+    transform: translateY(-100%);
+    position: fixed;
 }
 
 .header__in {
@@ -51,6 +52,12 @@
     height: 100%;
     -o-object-fit: contain;
     object-fit: contain
+}
+
+.header__logo_text {
+    font-weight: 600;
+    font-size: 2rem;
+    color: #2c2929;
 }
 
 .header__nav {
