@@ -37,6 +37,24 @@
     },
     "featured_product_custom_ecdkpz": {
       "type": "featured-product-custom",
+      "blocks": {
+        "title_H78aDz": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "text_xm7qyn": {
+          "type": "text",
+          "settings": {
+            "text": "Text block somt letters dfgdfgdfgdf",
+            "text_style": "subtitle"
+          }
+        }
+      },
+      "block_order": [
+        "title_H78aDz",
+        "text_xm7qyn"
+      ],
       "settings": {
         "product": "black-leather-bag"
       }
