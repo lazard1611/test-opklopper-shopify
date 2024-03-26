@@ -98,7 +98,7 @@
                     {%- when 'text' -%}
                         <div class="product__description js-fade-el js-hidden-text-container">
                         <div data-max-text="150" data-ellipse-disable="true" class="product__description_text js-hidden-text">
-                            <p>{{ product.description | escape}}Ontgrendel ergonomische uitmuntendheid en verhoog je efficiëntie met onze zit-sta bureau oplossing!</p>
+                            {{ product.description | escape}}
 
                             <p>{{- block.settings.text -}}</p>
                         </div>
