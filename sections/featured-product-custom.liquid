@@ -98,7 +98,7 @@
                     {%- when 'text' -%}
                         <div class="product__description js-fade-el js-hidden-text-container">
                         <div data-max-text="150" data-ellipse-disable="true" class="product__description_text js-hidden-text">
-                            {{ product.description | strip_html}}
+                            <p>{{ product.description | strip_html}}</p>
 
                             <p>{{- block.settings.text -}}</p>
                         </div>
