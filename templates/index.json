@@ -38,7 +38,7 @@
     "featured_product_custom_ecdkpz": {
       "type": "featured-product-custom",
       "settings": {
-        "title": "Product title"
+        "product": "black-leather-bag"
       }
     },
     "section_description_3cEt9U": {
