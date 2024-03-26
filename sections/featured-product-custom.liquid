@@ -84,22 +84,72 @@
             </div>
         </div>
         <div class="product__col_content">
-            <h1 class="product__title js-fade-el">
-                {%- if product.title != blank -%}
-                    {{ product.title | escape }}
-                {%- else -%}
-                    {{ 'onboarding.product_title' | t }}
-                {%- endif -%}
-            </h1>
-            <div class="product__description js-fade-el js-hidden-text-container">
-                <div data-max-text="150" data-ellipse-disable="true" class="product__description_text js-hidden-text">
-                    <p>Ontgrendel ergonomische uitmuntendheid en verhoog je efficiëntie met onze zit-sta bureau oplossing!</p>
+            {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                    {%- when '@app' -%}
+                        {% render block %}
+                    {%- when 'title' -%}
+                        <h1 class="product__title js-fade-el">
+                            {%- if product.title != blank -%}
+                                {{ product.title | escape }}
+                            {%- else -%}
+                                {{ 'onboarding.product_title' | t }}
+                            {%- endif -%}
+                        </h1>
+                    {%- when 'text' -%}
+                        <div class="product__description js-fade-el js-hidden-text-container">
+                        <div data-max-text="150" data-ellipse-disable="true" class="product__description_text js-hidden-text">
+                            <p>Ontgrendel ergonomische uitmuntendheid en verhoog je efficiëntie met onze zit-sta bureau oplossing!</p>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa</p>
-                </div>
+                            <p>{{- block.settings.text -}}</p>
+                        </div>
 
-                <button type="button" class="show_btn js-hidden-text-btn">Show more</button>
-            </div>
+                        <button type="button" class="show_btn js-hidden-text-btn">Show more</button>
+                    </div>
+
+                    {%- when 'price' -%}
+                        <div class="no-js-hidden">
+
+                        </div>
+
+                        {%- if product.quantity_price_breaks_configured? -%}
+                            <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
+                                <span>{{ 'products.product.volume_pricing.note' | t }}</span>
+                            </div>
+                        {%- endif -%}
+                        {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
+                            <div class="product__tax caption rte">
+                                {%- if cart.taxes_included -%}
+                                    {{ 'products.product.include_taxes' | t }}
+                                {%- endif -%}
+                                {%- if shop.shipping_policy.body != blank -%}
+                                    {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                                {%- endif -%}
+                            </div>
+                        {%- endif -%}
+                        {%- if product != blank -%}
+                            <div {{ block.shopify_attributes }}>
+                                {%- form 'product', product -%}
+                                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                                    {{ form | payment_terms }}
+                                {%- endform -%}
+                            </div>
+                        {%- endif -%}
+
+                    {%- when 'quantity_selector' -%}
+
+
+
+                    {%- when 'variant_picker' -%}
+
+                    {%- when 'buy_buttons' -%}
+
+                    {%- when 'icon-with-text' -%}
+                        {% render 'icon-with-text', block: block %}
+                {%- endcase -%}
+            {%- endfor -%}
+
+
 
             <form action="#" class="product__content_options js-fade-el">
                 <div class="product__options_wrap">
@@ -367,8 +417,54 @@
     ],
     "blocks": [
         {
+        "type": "@app"
+        },
+        {
         "type": "text",
-        "name": "t:sections.featured-product.blocks.text.name"
+        "name": "t:sections.featured-product.blocks.text.name",
+        "settings": [
+            {
+            "type": "inline_richtext",
+            "id": "text",
+            "default": "Text block",
+            "label": "t:sections.featured-product.blocks.text.settings.text.label"
+            },
+            {
+            "type": "select",
+            "id": "text_style",
+            "options": [
+                    {
+                    "value": "body",
+                    "label": "t:sections.featured-product.blocks.text.settings.text_style.options__1.label"
+                    },
+                    {
+                    "value": "subtitle",
+                    "label": "t:sections.featured-product.blocks.text.settings.text_style.options__2.label"
+                    },
+                    {
+                    "value": "uppercase",
+                    "label": "t:sections.featured-product.blocks.text.settings.text_style.options__3.label"
+                    }
+                ],
+                "default": "body",
+                "label": "t:sections.featured-product.blocks.text.settings.text_style.label"
+                }
+            ]
+        },
+        {
+        "type": "title",
+        "name": "t:sections.featured-product.blocks.title.name",
+        "limit": 1
+        },
+        {
+        "type": "price",
+        "name": "t:sections.featured-product.blocks.price.name",
+        "limit": 1
+        },
+        {
+        "type": "quantity_selector",
+        "name": "t:sections.featured-product.blocks.quantity_selector.name",
+        "limit": 1
         }
     ],
     "presets": [
