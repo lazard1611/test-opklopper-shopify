@@ -1,58 +1,16 @@
 {
   "sections": {
-    "featured_product_YTU8ck": {
-      "type": "featured-product",
-      "blocks": {
-        "title_NCX9Mq": {
-          "type": "title",
-          "settings": {
-            "heading_size": "h1"
-          }
-        },
-        "variant_picker_UPNXUq": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button"
-          }
-        }
-      },
-      "block_order": [
-        "title_NCX9Mq",
-        "variant_picker_UPNXUq"
-      ],
-      "settings": {
-        "product": "black-leather-bag",
-        "color_scheme": "",
-        "secondary_background": false,
-        "media_size": "medium",
-        "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "media_position": "left",
-        "image_zoom": "lightbox",
-        "hide_variants": false,
-        "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "featured_product_custom_ecdkpz": {
       "type": "featured-product-custom",
       "blocks": {
-        "title_H78aDz": {
-          "type": "title",
-          "settings": {
-          }
-        },
         "text_xm7qyn": {
           "type": "text",
           "settings": {
-            "text": "Text block somt letters dfgdfgdfgdf",
-            "text_style": "subtitle"
+            "text": "Text block somt letters dfgdfgdfgdf"
           }
         }
       },
       "block_order": [
-        "title_H78aDz",
         "text_xm7qyn"
       ],
       "settings": {
@@ -226,7 +184,6 @@
     }
   },
   "order": [
-    "featured_product_YTU8ck",
     "featured_product_custom_ecdkpz",
     "section_description_3cEt9U",
     "characteristics_list_aU4Dmx",
