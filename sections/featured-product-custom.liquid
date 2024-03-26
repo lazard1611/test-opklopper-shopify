@@ -84,22 +84,21 @@
             </div>
         </div>
         <div class="product__col_content">
+            <h1 class="product__title js-fade-el">
+                {%- if product.title != blank -%}
+                    {{ product.title | escape }}
+                {%- else -%}
+                    {{ 'onboarding.product_title' | t }}
+                {%- endif -%}
+            </h1>
             {%- for block in section.blocks -%}
                 {%- case block.type -%}
                     {%- when '@app' -%}
                         {% render block %}
-                    {%- when 'title' -%}
-                        <h1 class="product__title js-fade-el">
-                            {%- if product.title != blank -%}
-                                {{ product.title | escape }}
-                            {%- else -%}
-                                {{ 'onboarding.product_title' | t }}
-                            {%- endif -%}
-                        </h1>
                     {%- when 'text' -%}
                         <div class="product__description js-fade-el js-hidden-text-container">
                         <div data-max-text="150" data-ellipse-disable="true" class="product__description_text js-hidden-text">
-                            <p>Ontgrendel ergonomische uitmuntendheid en verhoog je efficiëntie met onze zit-sta bureau oplossing!</p>
+                            <p>{{ product.description | escape}}Ontgrendel ergonomische uitmuntendheid en verhoog je efficiëntie met onze zit-sta bureau oplossing!</p>
 
                             <p>{{- block.settings.text -}}</p>
                         </div>
@@ -423,38 +422,13 @@
         "type": "text",
         "name": "t:sections.featured-product.blocks.text.name",
         "settings": [
-            {
-            "type": "inline_richtext",
-            "id": "text",
-            "default": "Text block",
-            "label": "t:sections.featured-product.blocks.text.settings.text.label"
-            },
-            {
-            "type": "select",
-            "id": "text_style",
-            "options": [
-                    {
-                    "value": "body",
-                    "label": "t:sections.featured-product.blocks.text.settings.text_style.options__1.label"
-                    },
-                    {
-                    "value": "subtitle",
-                    "label": "t:sections.featured-product.blocks.text.settings.text_style.options__2.label"
-                    },
-                    {
-                    "value": "uppercase",
-                    "label": "t:sections.featured-product.blocks.text.settings.text_style.options__3.label"
-                    }
-                ],
-                "default": "body",
-                "label": "t:sections.featured-product.blocks.text.settings.text_style.label"
+                {
+                "type": "inline_richtext",
+                "id": "text",
+                "default": "Text block",
+                "label": "t:sections.featured-product.blocks.text.settings.text.label"
                 }
             ]
-        },
-        {
-        "type": "title",
-        "name": "t:sections.featured-product.blocks.title.name",
-        "limit": 1
         },
         {
         "type": "price",
