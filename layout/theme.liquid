@@ -1,46 +1,48 @@
 <!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=5, minimum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="canonical" href="{{ canonical_url }}">
-    {{ content_for_header }}
-    {{ 'base.css' | asset_url | stylesheet_tag }}
-    {{ 'fancybox.css' | asset_url | stylesheet_tag }}
-    {{ 'swiper-bundle.css' | asset_url | stylesheet_tag }}
-    <title>{{ page_title }}</title>
-</head>
-<body>
+<html lang='en'>
+	<head>
+		<meta charset='UTF-8'>
+		<meta
+			name='viewport'
+			content='width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=5, minimum-scale=1'
+		>
+		<meta http-equiv='X-UA-Compatible' content='ie=edge'>
+		<link rel='canonical' href='{{ canonical_url }}'>
+		{{ content_for_header }}
+		{{ 'base.css' | asset_url | stylesheet_tag }}
+		{{ 'fancybox.css' | asset_url | stylesheet_tag }}
+		{{ 'swiper-bundle.css' | asset_url | stylesheet_tag }}
+		<title>{{ page_title }}</title>
+	</head>
+	<body>
+		<div class='preloader'></div>
 
-<div class="preloader"></div>
+		{% sections 'header-group' %}
 
-{% sections 'header-group' %}
+		<div class='wrapper'>
+			<div class='base'>
+				{{ content_for_layout }}
+			</div>
+			<footer class='footer'></footer>
+		</div>
 
-<div class="wrapper">
-    <div class="base">
-        {{ content_for_layout }}
-    </div>
-    <footer class="footer"></footer>
-</div>
+		<script src='{{ 'main.js' | asset_url }}' defer='defer'></script>
+		<script src='{{ 'show-more-and-less.js' | asset_url }}' defer='defer'></script>
+		<script src='{{ 'quantity.js' | asset_url }}' defer='defer'></script>
+		<script src='{{ 'swiper.js' | asset_url }}' defer='defer'></script>
+		<script src='{{ 'fancybox.js' | asset_url }}' defer='defer'></script>
+		<script src='{{ 'drop-menu.js' | asset_url }}' defer='defer'></script>
+		<script src='{{ 'gsap.min.js' | asset_url }}' defer='defer'></script>
+		<script src='{{ 'ScrollTrigger.min.js' | asset_url }}' defer='defer'></script>
 
-<script src="{{ 'main.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'show-more-and-less.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'quantity.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'swiper.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'fancybox.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'drop-menu.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'ScrollTrigger.min.js' | asset_url }}" defer="defer"></script>
+		{% comment %}<script src="{{ 'share.js' | asset_url }}" defer="defer"></script>{% endcomment %}
+		<script src='{{ 'product-info.js' | asset_url }}' defer='defer'></script>
 
-{% comment %}<script src="{{ 'share.js' | asset_url }}" defer="defer"></script>{% endcomment %}
-<script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
-
-<script>
-    window.accessibilityStrings = {
-        imageAvailable: `{{ 'products.product.media.image_available' | t: index: '[index]' }}`,
-        shareSuccess: `{{ 'general.share.success_message' | t }}`,
-    };
-</script>
-</body>
+		<script>
+			window.accessibilityStrings = {
+				imageAvailable: `{{ 'products.product.media.image_available' | t: index: '[index]' }}`,
+				shareSuccess: `{{ 'general.share.success_message' | t }}`,
+			};
+		</script>
+	</body>
 </html>

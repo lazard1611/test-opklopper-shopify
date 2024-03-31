@@ -1,110 +1,118 @@
 {{ 'video-bg-with-richtext.css' | asset_url | stylesheet_tag }}
 
 {%- if section.blocks.size > 0 -%}
-    {%- for block in section.blocks -%}
-        {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-        {% if block.type == 'video' %}
-            <div class="introduction__container"
-                 style="{%- if block.settings.video_link == blank -%}background-image: url('{{ block.settings.video_image  | img_url: 'master' }}');{%- endif -%}">
-                {%- if block.settings.video_link != blank -%}
-                    <div class="introduction__video_bg">
-                        <video class="introduction__video" loop autoplay preload="none" muted playsinline
-                               poster="https:{{ block.settings.video_image | img_url: 'master' }}">
-                            <source src="{{ block.settings.video_link }}" type="video/mp4">
-                        </video>
-                    </div>
-                {% endif %}
-                <div class="overlay" style="opacity: 0.{{ block.settings.overlay_opacity }}"></div>
-                <div class="introduction__wrap">
-                    {%- style -%}
-                        .videoBackground .introduction__pre_title p {
-                        color: {{ block.settings.color_text }}!important;
-                        }
-                    {%- endstyle -%}
+	{%- for block in section.blocks -%}
+		{%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+		{% if block.type == 'video' %}
+			<div
+				class='introduction__container'
+				style='{%- if block.settings.video_link == blank -%}background-image: url('{{ block.settings.video_image  | img_url: 'master' }}');{%- endif -%}'
+			>
+				{%- if block.settings.video_link != blank -%}
+					<div class='introduction__video_bg'>
+						<video
+							class='introduction__video'
+							loop
+							autoplay
+							preload='none'
+							muted
+							playsinline
+							poster='https:{{ block.settings.video_image | img_url: 'master' }}'
+						>
+							<source src='{{ block.settings.video_link }}' type='video/mp4'>
+						</video>
+					</div>
+				{% endif %}
+				<div class='overlay' style='opacity: 0.{{ block.settings.overlay_opacity }}'></div>
+				<div class='introduction__wrap'>
+					{%- style -%}
+						.videoBackground .introduction__pre_title p {
+						color: {{ block.settings.color_text }}!important;
+						}
+					{%- endstyle -%}
 
-                    {% if block.settings.text != blank %}
-                        <div class="introduction__pre_title js-fade-el" id="{{ block.id }}"
-                             style="color: {{ block.settings.color_text }}">
-                            {{ block.settings.text }}
-                        </div>
-                    {% endif %}
+					{% if block.settings.text != blank %}
+						<div
+							class='introduction__pre_title js-fade-el'
+							id='{{ block.id }}'
+							style='color: {{ block.settings.color_text }}'
+						>
+							{{ block.settings.text }}
+						</div>
+					{% endif %}
 
-                    {% if block.settings.title != blank %}
-                        <h2 class="introduction__title js-fade-el" style="color: {{ block.settings.color_text }}">
-                            {{ block.settings.title | escape }}
-                        </h2>
-                    {% endif %}
+					{% if block.settings.title != blank %}
+						<h2 class='introduction__title js-fade-el' style='color: {{ block.settings.color_text }}'>
+							{{ block.settings.title | escape }}
+						</h2>
+					{% endif %}
 
-                    {% if block.settings.button_link != blank and block.settings.button_label != blank %}
+					{% if block.settings.button_link != blank and block.settings.button_label != blank %}
+						<a
+							href='{{ block.settings.button_link }}'
+							class='introduction__btn js-fade-el'
+							style='color: {{ block.settings.color_btn_text }}; background: {{ block.settings.color_btn_bg }}'
+						>
+							{{ block.settings.button_label | escape }}
+						</a>
+					{% endif %}
+				</div>
+			</div>
+		{% else %}
+			<div
+				class='introduction__container'
+				style='background-color: {{ block.settings.color_bg }}; {%- if block.settings.image_bg != blank -%}background-image: url('{{ block.settings.image_bg | img_url: 'master' }}');{%- endif -%}'
+			>
+				<div class='overlay' style='opacity: 0.{{ block.settings.overlay_opacity }}'></div>
+				<div class='introduction__wrap'>
+					{%- style -%}
+						.videoBackground .introduction__pre_title p {
+						color: {{ block.settings.color_text }}!important;
+						}
+					{%- endstyle -%}
 
-                        <a href="{{ block.settings.button_link }}" class="introduction__btn js-fade-el"
-                           style="color: {{ block.settings.color_btn_text }}; background: {{ block.settings.color_btn_bg }}">
+					{% if block.settings.text != blank %}
+						<div
+							class='introduction__pre_title js-fade-el'
+							id='{{ block.id }}'
+							style='color: {{ block.settings.color_text }}'
+						>
+							{{ block.settings.text }}
+						</div>
+					{% endif %}
 
-                            {{ block.settings.button_label | escape }}
+					{% if block.settings.title != blank %}
+						<h2 class='introduction__title js-fade-el' style='color: {{ block.settings.color_text }}'>
+							{{ block.settings.title | escape }}
+						</h2>
+					{% endif %}
 
-                        </a>
-
-                    {% endif %}
-
-                </div>
-            </div>
-        {% else %}
-            <div class="introduction__container"
-                 style="background-color: {{ block.settings.color_bg }}; {%- if block.settings.image_bg != blank -%}background-image: url('{{ block.settings.image_bg | img_url: 'master' }}');{%- endif -%}">
-
-                <div class="overlay" style="opacity: 0.{{ block.settings.overlay_opacity }}"></div>
-                <div class="introduction__wrap">
-                    {%- style -%}
-                        .videoBackground .introduction__pre_title p {
-                        color: {{ block.settings.color_text }}!important;
-                        }
-                    {%- endstyle -%}
-
-                    {% if block.settings.text != blank %}
-                        <div class="introduction__pre_title js-fade-el" id="{{ block.id }}"
-                             style="color: {{ block.settings.color_text }}">
-                            {{ block.settings.text }}
-                        </div>
-                    {% endif %}
-
-                    {% if block.settings.title != blank %}
-                        <h2 class="introduction__title js-fade-el" style="color: {{ block.settings.color_text }}">
-                            {{ block.settings.title | escape }}
-                        </h2>
-                    {% endif %}
-
-                    {% if block.settings.button_link != blank and block.settings.button_label != blank %}
-
-                        <a href="{{ block.settings.button_link }}" class="introduction__btn js-fade-el"
-                           style="color: {{ block.settings.color_btn_text }}; background: {{ block.settings.color_btn_bg }}">
-
-                            {{ block.settings.button_label | escape }}
-                        </a>
-
-                    {% endif %}
-
-                </div>
-
-            </div>
-        {% endif %}
-    {%- endfor -%}
+					{% if block.settings.button_link != blank and block.settings.button_label != blank %}
+						<a
+							href='{{ block.settings.button_link }}'
+							class='introduction__btn js-fade-el'
+							style='color: {{ block.settings.color_btn_text }}; background: {{ block.settings.color_btn_bg }}'
+						>
+							{{ block.settings.button_label | escape }}
+						</a>
+					{% endif %}
+				</div>
+			</div>
+		{% endif %}
+	{%- endfor -%}
 {% else %}
-
-    <div class="placeholderNoblocks">
-        This section doesn’t currently include any content. Add content to this section using the sidebar.
-    </div>
-
+	<div class='placeholderNoblocks'>
+		This section doesn’t currently include any content. Add content to this section using the sidebar.
+	</div>
 {%- endif -%}
 
-
 {% schema %}
-
 {
 "name": {
-  "en": "Video Background"
-  },
-  "tag": "section",
-  "class": "section introduction",
+"en": "Video Background"
+},
+"tag": "section",
+"class": "section introduction",
 "max_blocks": 1,
 "blocks": [
 {
@@ -160,7 +168,8 @@
 "en": "Description"
 },
 "default": {
-"en": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+"en": "<p>Use this text to share information about your brand with your customers. Describe a product, share
+	announcements, or welcome customers to your store.</p>"
 }
 },
 {
@@ -250,7 +259,8 @@
 "en": "Description"
 },
 "default": {
-"en": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+"en": "<p>Use this text to share information about your brand with your customers. Describe a product, share
+	announcements, or welcome customers to your store.</p>"
 }
 },
 {

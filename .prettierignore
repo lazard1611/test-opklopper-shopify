@@ -1,0 +1,9 @@
+**/*.min.js
+**/*.min.css
+package-lock.json
+/templates
+/locales
+/assets
+
+**/*.prettierignore
+helpers/*.*

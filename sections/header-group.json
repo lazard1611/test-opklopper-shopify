@@ -1,34 +1,28 @@
 {
-  "name": "t:sections.header.name",
-  "type": "header",
-  "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
-      "blocks": {
-        "announcement-bar-0": {
-          "type": "announcement",
-          "settings": {
-            "text": "Gratis bezorging & montage vanaf € 275 — in Nederland & Belgie",
-            "text_rating": "1599 reviews"
-          }
-        }
-      },
-      "block_order": [
-        "announcement-bar-0"
-      ],
-      "settings": {
-        "show_social": false,
-        "auto_rotate": false
-      }
-    },
-    "header": {
-      "type": "header",
-      "settings": {
-      }
-    }
-  },
-  "order": [
-    "announcement-bar",
-    "header"
-  ]
+	"name": "t:sections.header.name",
+	"type": "header",
+	"sections": {
+		"announcement-bar": {
+			"type": "announcement-bar",
+			"blocks": {
+				"announcement-bar-0": {
+					"type": "announcement",
+					"settings": {
+						"text": "Gratis bezorging & montage vanaf € 275 — in Nederland & Belgie",
+						"text_rating": "1599 reviews"
+					}
+				}
+			},
+			"block_order": ["announcement-bar-0"],
+			"settings": {
+				"show_social": false,
+				"auto_rotate": false
+			}
+		},
+		"header": {
+			"type": "header",
+			"settings": {}
+		}
+	},
+	"order": ["announcement-bar", "header"]
 }

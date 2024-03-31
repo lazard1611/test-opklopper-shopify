@@ -90,7 +90,8 @@
     align-items: center;
     font-size: 1.8rem;
     line-height: 1;
-    cursor: pointer
+    cursor: pointer;
+    color: #2c2929;
 }
 
 .header__lang .drop__btn {
@@ -108,13 +109,13 @@
     display: inline-flex;
     align-items: center;
     align-content: center;
-    color: #2c2929
 }
 
 .drop__btn_icon {
     flex-shrink: 0;
     margin-left: 1rem;
-    transition: transform .3s ease
+    transition: transform .3s ease;
+    color: inherit;
 }
 
 .header__lang .drop__btn_icon {

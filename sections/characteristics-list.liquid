@@ -1,60 +1,60 @@
 {{ 'characteristics-list.css' | asset_url | stylesheet_tag }}
 
-<div class="characteristics__container">
-    <div class="characteristics__wrap">
-        <h2 class="h2 characteristics__head js-fade-el">{{ section.settings.title }}</h2>
-        <ul class="characteristics__list js-fade-el">
-          {% for block in section.blocks %}
-            <li class="characteristics__item">
-              <div class="characteristics__title">{{ block.settings.title }}:</div>
-              <div class="characteristics__value">{{ block.settings.value }}</div>
-            </li>
-          {% endfor %}
-        </ul>
-    </div>
+<div class='characteristics__container'>
+	<div class='characteristics__wrap'>
+		<h2 class='h2 characteristics__head js-fade-el'>{{ section.settings.title }}</h2>
+		<ul class='characteristics__list js-fade-el'>
+			{% for block in section.blocks %}
+				<li class='characteristics__item'>
+					<div class='characteristics__title'>{{ block.settings.title }}:</div>
+					<div class='characteristics__value'>{{ block.settings.value }}</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
 </div>
 
 {% schema %}
- {
-  "name": "Section characteristics",
-  "tag": "section",
-  "class": "section characteristics",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
-  "settings": [
-    {
-      "type": "inline_richtext",
-      "id": "title",
-      "default": "Eigenschappen",
-      "label": "Section characteristics title"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "characteristic",
-      "name": "Characteristic",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Your title here"
-        },
-        {
-          "type": "text",
-          "id": "value",
-          "label": "Value",
-          "default": "Your value here"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Section characteristics",
-      "category": "Custom"
-    }
-  ]
+{
+	"name": "Section characteristics",
+	"tag": "section",
+	"class": "section characteristics",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "inline_richtext",
+			"id": "title",
+			"default": "Eigenschappen",
+			"label": "Section characteristics title"
+		}
+	],
+	"blocks": [
+		{
+			"type": "characteristic",
+			"name": "Characteristic",
+			"settings": [
+				{
+					"type": "text",
+					"id": "title",
+					"label": "Title",
+					"default": "Your title here"
+				},
+				{
+					"type": "text",
+					"id": "value",
+					"label": "Value",
+					"default": "Your value here"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Section characteristics",
+			"category": "Custom"
+		}
+	]
 }
 {% endschema %}
