@@ -5,7 +5,10 @@
     assign product = section.settings.product
 -%}
 
+{% assign product_title = all_products['product-1'].title  %}
+
 <div class="product__container">
+  {{ product_title }}
     <div class="breadcrumbs js-anim-breadcrumbs">
         <ul class="breadcrumbs__list">
             <li class="breadcrumbs__item">
